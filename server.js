@@ -12,9 +12,11 @@ const app = express();
 
 // Middleware
 app.use(cors({
-    origin: ['https://daily-code-six.vercel.app', 'http://localhost:5173', 'http://localhost:5174'],
-    credentials: false,
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+app.options('*', cors()); // Handle preflight requests
 app.use(express.json());
 
 // Routes
