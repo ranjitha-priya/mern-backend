@@ -12,8 +12,8 @@ const app = express();
 
 // Middleware
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175'],
-    credentials: true,
+    origin: ['https://daily-code-six.vercel.app', 'http://localhost:5173', 'http://localhost:5174'],
+    credentials: false,
 }));
 app.use(express.json());
 
@@ -47,13 +47,10 @@ mongoose
     .then(() => {
         console.log('✅ MongoDB connected successfully');
         app.listen(PORT, () => {
-            console.log(`🚀 Server running on http://localhost:${PORT}`);
+            console.log(`🚀 Server running on port ${PORT}`);
         });
     })
     .catch((err) => {
         console.error('❌ MongoDB connection failed:', err.message);
         process.exit(1);
     });
-app.use(cors({
-  origin: "https://your-frontend-url.vercel.app"
-}));
